@@ -42,24 +42,5 @@ class StoreFirebaseController extends Controller
         return response()->json($data);
     }
 
-    public function update(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:50',
-            'email' => 'required|email|max:100',
-            'content' => 'required|string',
-        ]);
-
-        $data = [
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'content' => $validated['content'],
-            'created_at' => now()->toDateTimeString(),
-        ];
-
-        $title = 'secret';
-        FirebaseService::update($title, $data);
-
-        return response()->json('Data has been updated');
-    }
+    
 }
